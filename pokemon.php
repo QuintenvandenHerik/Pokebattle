@@ -1,5 +1,5 @@
 <?php
-
+require 'typechart.php';
 class pokemon {
 	public $name;
 	public $energytype;
@@ -25,7 +25,11 @@ class pokemon {
         return json_encode($this);
     }
 
-    public function attack($target){
+    public function checkModifier($target) {
+    	echo $table[$this->energytype][$target->energytype];
+    }
+
+    public function attack($target) {
     	echo $this->name . " will attack " . $target->name . " with " . $this->energytype . " for " . $this->damage . " points.<br>";
     	$this->doDamage($this->energytype, $this->damage);
     	print_r($this->moves);
