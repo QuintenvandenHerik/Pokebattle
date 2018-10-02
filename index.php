@@ -4,10 +4,10 @@ require 'pokemon.php';
 
 
 
-$pikachu = new pokemon('Pikachu', 'electric', 35, 'ground', 'fighting', 55, 40, ['Growl', 'Thunder Shock', 'Thunder Wave', 'Quick Attack']);
+$pikachu = new pokemon('Pikachu', 'electric', 35, 55, 40, ['Growl', 'Thunder Shock', 'Thunder Wave', 'Quick Attack']);
 print_r('<pre>'. $pikachu . '</pre>');
 
-$charmeleon = new pokemon('Charmeleon', 'fire', 58, 'water', 'lightning', 64, 58, ['Ember', 'Smokescreen', 'Fire Fang', 'Dragon Rage']);
+$charmeleon = new pokemon('Charmeleon', 'fire', 58, 64, 58, ['Ember', 'Smokescreen', 'Fire Fang', 'Dragon Rage']);
 print_r('<pre>'. $charmeleon . '</pre>');
 
 $pikachu->checkModifier($charmeleon);

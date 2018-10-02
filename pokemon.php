@@ -11,13 +11,11 @@ class pokemon {
 	public $damage;
 	public $defence;
 
-	public function __construct($name, $energytype, $hitpoints, $weakness, $ressistance, $damage, $defence, $moves)
+	public function __construct($name, $energytype, $hitpoints, $damage, $defence, $moves)
     {
         $this->name = $name;
         $this->energytype = $energytype;
         $this->hitpoints = $hitpoints;
-        $this->weakness = $weakness;
-        $this->ressistance = $ressistance;
         $this->damage = $damage;
         $this->defence = $defence;
         $this->moves = $moves;
