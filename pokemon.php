@@ -1,6 +1,7 @@
 <?php
-require 'typechart.php';
+
 class pokemon {
+
 	public $name;
 	public $energytype;
 	public $hitpoints;
@@ -26,7 +27,9 @@ class pokemon {
     }
 
     public function checkModifier($target) {
-    	echo $table[$this->energytype][$target->energytype];
+    	require 'typechart.php';
+    	$modifier = $table[$this->energytype][$target->energytype];
+    	echo $table[$this->energytype][$target->energytype] . "<br>";
     }
 
     public function attack($target) {
