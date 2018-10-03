@@ -4,20 +4,30 @@ class pokemon {
 
 	public $name;
 	public $energytype;
+	public $maxHitpoints;
 	public $hitpoints;
-	public $weakness;
-	public $ressistance;
-	public $moves;
-	public $damage;
+	public $attack;
+	public $SpAttack;
 	public $defence;
+	public $SpDefence;
+	public $speed;
+	public $accuracy;
+	public $evasion;
+	public $moves;
 
-	public function __construct($name, $energytype, $hitpoints, $damage, $defence, $moves)
+	public function __construct($name, $energytype, $maxHitpoints, $hitpoints, $attack, $SpAttack, $defence, $SpDefence, $speed, $accuracy, $evasion, $moves)
     {
         $this->name = $name;
         $this->energytype = $energytype;
+        $this->maxHitpoints = $maxHitpoints;
         $this->hitpoints = $hitpoints;
-        $this->damage = $damage;
+        $this->attack = $attack;
+        $this->SpAttack = $SpAttack;
         $this->defence = $defence;
+        $this->SpDefence = $SpDefence;
+        $this->speed = $speed;
+        $this->accuracy = $accuracy;
+        $this->evasion = $evasion;
         $this->moves = $moves;
     }
     public function __toString() {
@@ -30,9 +40,9 @@ class pokemon {
     	echo $table[$this->energytype][$target->energytype] . "<br>";
     }
 
-    public function attack($target) {
-    	echo $this->name . " will attack " . $target->name . " with " . $this->energytype . " for " . $this->damage . " points.<br>";
-    	$this->doDamage($this->energytype, $this->damage);
+    public function fight($target) {
+    	echo $this->name . " will attack " . $target->name . " with " . $this->energytype . " for " . $this->attack . " points.<br>";
+    	$this->doDamage($this->energytype, $this->attack);
     	print_r($this->moves);
     }
 
