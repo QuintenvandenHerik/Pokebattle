@@ -37,16 +37,19 @@ class pokemon {
     public function checkModifier($target) {
     	require 'typechart.php';
     	$modifier = $table[$this->energytype][$target->energytype];
-    	echo $table[$this->energytype][$target->energytype] . "<br>";
+    	return $modifier;
     }
 
     public function fight($target) {
-    	echo $this->name . " will attack " . $target->name . " with " . $this->energytype . " for " . $this->attack . " points.<br>";
-    	$this->doDamage($this->energytype, $this->attack);
-    	print_r($this->moves);
+    	$modifier = $this->checkModifier($target);
+
+    	echo $this->name . " will attack " . $target->name . " with " . $this->energytype . " for " . $this->attack . " points with modifier" . $modifier . "<br>";
+    	$target->doDamage($this->energytype, $this->attack, $modifier);
+    	//print_r($this->moves);
     }
 
-    public function doDamage($energytype, $damage) {
-    	echo $this->name . " attacked with " . $energytype . " for " . $damage . " points.<br>";
+    public function doDamage($energytype, $points, $modifier) {
+    	echo $this->name . " attacked with " . $energytype . "  points:" .$points. " with modifier" . $modifier . "<br>";
+    	$this->hitpoints = $this->hitpoints - $points * $modifier;
     }
 }
