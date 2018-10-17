@@ -35,8 +35,8 @@ class pokemon {
 
         if(isset($stats[$name])) {
 
-			foreach ($stats[$name]['moves'] as $attackname=>$value) {
-				$this->moves[] = new move($attackname, $value);
+			foreach ($stats[$name]['Moves'] as $attackname=>$value) {
+				$this->Moves[] = new move($attackname, $value);
 			}
 		} else {
 			$this->moves = [];
