@@ -1,15 +1,21 @@
 <?php
 
 require 'pokemon.php';
+require 'pokebag.php';
 require 'move.php';
 require_once 'pokestats.php';
 
 
-$pikachu = new pokemon('Pikachu', 'electric', 35, 35, 55, 50, 40, 50, 90, 100, 0, $stats);
+$pikachu = new pokemon('Pikachu', 'electric', /*maxHitpoints*/ 35, /*hitpoints*/ 35, /*attack*/ 55, /*SpAttack*/ 50, /*defence*/ 40, /*SpDefence*/ 50, /*speed*/ 90, /*accuracy*/ 100, /*evasion*/ 0, $stats);
 dump($pikachu);
 
-$charmeleon = new pokemon('Charmeleon', 'fire', 58, 58, 64, 80, 58, 65, 80, 100, 0, $stats);
+$charmeleon = new pokemon('Charmeleon', 'fire', /*maxHitpoints*/ 58, /*hitpoints*/ 58, /*attack*/ 64, /*SpAttack*/ 80, /*defence*/ 58, /*SpDefence*/ 65, /*speed*/ 80, /*accuracy*/ 100, /*evasion*/ 0, $stats);
 dump($charmeleon);
+
+$pokebag = new pokebag();
+$pokebag->Add($pikachu);
+$pokebag->Add($charmeleon);
+dump($pokebag->GetAllNames());
 
 PrintPokemonStats($pikachu);
 PrintPokemonStats($charmeleon);
