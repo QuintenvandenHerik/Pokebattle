@@ -45,12 +45,12 @@ class PokeBag
     public function get($id)
     {
         // get a single item from the array $this->_pokemons
-        return null;
+        return $this->pokemons[$id];
     }
 
     public function random() 
     {
         // use array_rand
-        return null;
+        return array_rand($this->pokemons);
     }
 }
