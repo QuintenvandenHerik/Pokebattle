@@ -6,17 +6,17 @@ require 'move.php';
 require_once 'pokestats.php';
 
 
-$pikachu = new pokemon('Pikachu', 'electric', null, /*maxHitpoints*/ 35, /*hitpoints*/ 35, /*attack*/ 55, /*SpAttack*/ 50, /*defence*/ 40, /*SpDefence*/ 50, /*speed*/ 90, /*accuracy*/ 100, /*evasion*/ 0, $stats);
+$pikachu = new pokemon('Pikachu', 'electric', null, /*level*/40, /*maxHitpoints*/ rand(90 , 115), /*hitpoints*/ null, /*attack*/ rand(61 , 86), /*SpAttack*/ rand(57 , 82), /*defence*/ rand(49 , 74), /*SpDefence*/ rand(57 , 82), /*speed*/ rand(89 , 114), /*accuracy*/ 100, /*evasion*/ 0, $stats);
 
-$charmeleon = new pokemon('Charmeleon', 'fire', null, /*maxHitpoints*/ 58, /*hitpoints*/ 58, /*attack*/ 64, /*SpAttack*/ 80, /*defence*/ 58, /*SpDefence*/ 65, /*speed*/ 80, /*accuracy*/ 100, /*evasion*/ 0, $stats);
+$charmeleon = new pokemon('Charmeleon', 'fire', null, /*level*/40, /*maxHitpoints*/ rand(108 , 134), /*hitpoints*/ null, /*attack*/ rand(68 , 93), /*SpAttack*/ rand(81 , 106), /*defence*/ rand(63 , 89), /*SpDefence*/ rand(69 , 94), /*speed*/ rand(81 , 106), /*accuracy*/ 100, /*evasion*/ 0, $stats);
 
-$ivysaur = new pokemon('Ivysaur', 'grass', 'poison', /*maxHitpoints*/ 60, /*hitpoints*/ 60, /*attack*/ 62, /*SpAttack*/ 80, /*defence*/ 63, /*SpDefence*/ 80, /*speed*/ 60, /*accuracy*/ 100, /*evasion*/ 0, $stats);
+$ivysaur = new pokemon('Ivysaur', 'grass', 'poison', /*level*/40, /*maxHitpoints*/ rand(110 , 135), /*hitpoints*/ null, /*attack*/ rand(67 , 92), /*SpAttack*/ rand(81 , 106), /*defence*/ rand(67 , 93), /*SpDefence*/ rand(81 , 106), /*speed*/ rand(65 , 90), /*accuracy*/ 100, /*evasion*/ 0, $stats);
 
-$wartortle = new pokemon('Wartortle', 'water', null, /*maxHitpoints*/ 59, /*hitpoints*/ 59, /*attack*/ 63, /*SpAttack*/ 65, /*defence*/ 80, /*SpDefence*/ 80, /*speed*/ 58, /*accuracy*/ 100, /*evasion*/ 0, $stats);
+$wartortle = new pokemon('Wartortle', 'water', null, /*level*/40, /*maxHitpoints*/ rand(109 , 134), /*hitpoints*/ null, /*attack*/ rand(67 , 93), /*SpAttack*/ rand(69 , 94), /*defence*/ rand(81 , 106), /*SpDefence*/ rand(81 , 106), /*speed*/ rand(63 , 89), /*accuracy*/ 100, /*evasion*/ 0, $stats);
 
-$butterfree = new pokemon('Butterfree', 'bug', 'flying', /*maxHitpoints*/ 60, /*hitpoints*/ 60, /*attack*/ 45, /*SpAttack*/ 90, /*defence*/ 50, /*SpDefence*/ 80, /*speed*/ 70, /*accuracy*/ 100, /*evasion*/ 0, $stats);
+$butterfree = new pokemon('Butterfree', 'bug', 'flying', /*level*/40, /*maxHitpoints*/ rand(110 , 135), /*hitpoints*/ null, /*attack*/ rand(53 , 78), /*SpAttack*/ rand(89 , 114), /*defence*/ rand(57 , 82), /*SpDefence*/ rand(81 , 106), /*speed*/ rand(73 , 98), /*accuracy*/ 100, /*evasion*/ 0, $stats);
 
-$beedrill = new pokemon('Beedrill', 'bug', 'poison', /*maxHitpoints*/ 65, /*hitpoints*/ 65, /*attack*/ 90, /*SpAttack*/ 45, /*defence*/ 40, /*SpDefence*/ 80, /*speed*/ 75, /*accuracy*/ 100, /*evasion*/ 0, $stats);
+$beedrill = new pokemon('Beedrill', 'bug', 'poison', /*level*/40, /*maxHitpoints*/ rand(114 , 139), /*hitpoints*/ null, /*attack*/ rand(89 , 114), /*SpAttack*/ rand(53 , 78), /*defence*/ rand(49 , 74), /*SpDefence*/ rand(81 , 106), /*speed*/ rand(77 , 102), /*accuracy*/ 100, /*evasion*/ 0, $stats);
 
 
 $pokemon1 = null;
@@ -40,6 +40,8 @@ while ($pokemon1 == $pokemon2) {
 	else {
 		$pokemon1 = $pokebag->get($pokemon1);
 		$pokemon2 = $pokebag->get($pokemon2);
+		$pokemon1->hitpoints = $pokemon1->maxHitpoints;
+		$pokemon2->hitpoints = $pokemon2->maxHitpoints;
 		dump($pokemon1->name);
 		dump($pokemon2->name);
 	}
@@ -49,14 +51,14 @@ while ($pokemon1 == $pokemon2) {
 dump($pokemon1);
 dump($pokemon2);
 
-echo "Array of all pokemon: ";
-dump($pokebag->all());
+//echo "Array of all pokemon: ";
+//dump($pokebag->all());
 echo "All pokemon name: ";
 dump($pokebag->getAllNames());
-echo "Array of chosen pokemon: ";
-dump($pokebag->get(1));
-echo "Id of random pokemon: ";
-dump($pokebag->random());
+//echo "Array of chosen pokemon: ";
+//dump($pokebag->get(1));
+//echo "Id of random pokemon: ";
+//dump($pokebag->random());
 
 PrintPokemonStats($pokemon1);
 PrintPokemonStats($pokemon2);
@@ -74,7 +76,7 @@ function PrintPokemonStats($pokemon)
 	echo '<div style="border: 1px solid silver; font-weight:bold">';
 	echo 'Pokemon:' . '<br>';
 	echo 'Name: ' . $pokemon->name . '<br>';
-	echo 'Hitpoints: ' . $pokemon->hitpoints . '<br>';
+	echo 'Hitpoints: ' . round($pokemon->hitpoints) . '<br>';
 	echo 'defence: ' . $pokemon->defence . '<br>';
 	echo '</div>';
 }

@@ -5,6 +5,7 @@ class pokemon
 	public $name;
     public $energytype1;
     public $energytype2;
+    public $level;
 	public $maxHitpoints;
 	public $hitpoints;
 	public $attack;
@@ -14,9 +15,8 @@ class pokemon
 	public $speed;
 	public $accuracy;
 	public $evasion;
-	public $moves;
 
-	public function __construct($name, $energytype1, $energytype2, $maxHitpoints, $hitpoints, $attack, $SpAttack, $defence, $SpDefence, $speed, $accuracy, $evasion, $stats)
+	public function __construct($name, $energytype1, $energytype2, $level, $maxHitpoints, $hitpoints, $attack, $SpAttack, $defence, $SpDefence, $speed, $accuracy, $evasion, $stats)
     {
     	if(false == isset($stats[$name])) {
         	die('No info about ' . $name . ' in pokestats.php');
@@ -25,6 +25,7 @@ class pokemon
         $this->name = $name;
         $this->energytype1 = $energytype1;
         $this->energytype2 = $energytype2;
+        $this->level = $level;
         $this->maxHitpoints = $maxHitpoints;
         $this->hitpoints = $hitpoints;
         $this->attack = $attack;
@@ -69,19 +70,33 @@ class pokemon
     {
     	$modifier = $this->checkModifier($target);
 
-    	$target->doDamage($this->hitpoints, $this->name, $this->energytype1, $this->attack, $modifier, $target->name, $target);
+    	$target->doDamage($this->hitpoints, $this->name, $this->level, $this->energytype1, $this->attack, $modifier, $target->name, $target);
     	//print_r($this->moves);
     }
 
-    public function doDamage($hitpoints, $name, $energytype, $points, $modifier, $targetName, $target)
+    public function doDamage($hitpoints, $name, $level, $energytype, $attack, $modifier, $targetName, $target)
     {
-    	$damage = $points * $modifier - $target->defence;
+        /*
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        */
+        $power = 50;
+        /*
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        */
+        $damage = (((((2 * $level) / 5) + 2) * $power * $attack / $target->defence / 50) + 2) * $modifier;
+    	//$damage = $attack * $modifier - $target->defence;
     	if ($damage < 0) {
     		$damage = 0;
     	}
-    	echo $name . " attacked " . $targetName . " with " . $energytype . " for " .$points. " points, with a modifier of " . $modifier . " and did " . $damage . " damage <br>";
+    	echo $name . " attacked " . $targetName . " with " . $energytype . " for " . round($attack) . " points, with a modifier of " . $modifier . " and did " . round($damage) . " damage <br>";
 
-    	$target->hitpoints = $target->hitpoints - $damage;
+    	$target->hitpoints = $target->hitpoints - round($damage);
         if ($target->hitpoints <= 0) {
             $target->hitpoints = 0;
             echo $target->name . " fainted! <br>";
