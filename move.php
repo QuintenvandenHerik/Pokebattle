@@ -2,10 +2,10 @@
 
 class move {
 	public $name;
-	public $attackPoints;
+	public $stats;
 
-	public function __construct($name, $attackPoints) {
+	public function __construct($name, $stats) {
 		$this->name = $name;
-		$this->attackPoints = $attackPoints;
+		$this->stats = $stats;
 	}
 }

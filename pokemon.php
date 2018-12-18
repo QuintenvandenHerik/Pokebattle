@@ -42,46 +42,48 @@ class pokemon
 				$this->Moves[] = new move($attackname, $value);
 			}
 		} else {
-			$this->moves = [];
+			$this->Moves = [];
 		}
 
 
     }
 
-    public function __toString()
+    /*public function __toString()
     {
         return json_encode($this);
-    }
+    }*/
 
-    public function checkModifier($target)
+    public function checkMultiplier($target)
     {
     	require 'typechart.php';
         if ($target->energytype2 == null) {
-            $modifier = $table[$this->energytype1][$target->energytype1];
+            $multiplier = $table[$this->energytype1][$target->energytype1];
         }
         else {
-            $modifier = $table[$this->energytype1][$target->energytype1] * $table[$this->energytype1][$target->energytype2];
+            $multiplier = $table[$this->energytype1][$target->energytype1] * $table[$this->energytype1][$target->energytype2];
         }
 
-    	return $modifier;
+    	return $multiplier;
     }
 
     public function fight($target)
     {
-    	$modifier = $this->checkModifier($target);
+    	$multiplier = $this->checkMultiplier($target);
 
-    	$target->doDamage($this->hitpoints, $this->name, $this->level, $this->energytype1, $this->attack, $modifier, $target->name, $target);
+    	$target->doDamage($this->hitpoints, $this->name, $this->level, $this->energytype1, $this->attack, $multiplier, $target->name, $target, $this->Moves);
     	//print_r($this->moves);
     }
 
-    public function doDamage($hitpoints, $name, $level, $energytype, $attack, $modifier, $targetName, $target)
+    public function doDamage($hitpoints, $name, $level, $energytype, $attack, $multiplier, $targetName, $target, $moves)
     {
+        var_dump($moves[rand(0, 3)]);
         /*
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         */
+        $moves[rand(0, 3)];
         $power = 50;
         /*
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -89,12 +91,11 @@ class pokemon
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         */
-        $damage = (((((2 * $level) / 5) + 2) * $power * $attack / $target->defence / 50) + 2) * $modifier;
-    	//$damage = $attack * $modifier - $target->defence;
+        $damage = (((((2 * $level) / 5) + 2) * $power * $attack / $target->defence / 50) + 2) * $multiplier;
     	if ($damage < 0) {
     		$damage = 0;
     	}
-    	echo $name . " attacked " . $targetName . " with " . $energytype . " for " . round($attack) . " points, with a modifier of " . $modifier . " and did " . round($damage) . " damage <br>";
+    	echo $name . " attacked " . $targetName . " with " . $energytype . " for " . round($attack) . " points, with a multiplier of " . $multiplier . " and did " . round($damage) . " damage <br>";
 
     	$target->hitpoints = $target->hitpoints - round($damage);
         if ($target->hitpoints <= 0) {
