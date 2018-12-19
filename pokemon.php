@@ -3,8 +3,8 @@
 class pokemon
 {
 	public $name;
-    public $energytype1;
-    public $energytype2;
+    public $energyType1;
+    public $energyType2;
     public $level;
 	public $maxHitpoints;
 	public $hitpoints;
@@ -14,17 +14,18 @@ class pokemon
 	public $SpDefence;
 	public $speed;
 	public $accuracy;
-	public $evasion;
+    public $evasion;
+    public $move1;
+    public $move2;
+    public $move3;
+    public $move4;
 
-	public function __construct($name, $energytype1, $energytype2, $level, $maxHitpoints, $hitpoints, $attack, $SpAttack, $defence, $SpDefence, $speed, $accuracy, $evasion, $stats)
+	public function __construct($name, $energyType1, $energyType2, $level, $maxHitpoints, $hitpoints, $attack, $SpAttack, $defence, $SpDefence, $speed, $accuracy, $evasion, $move1, $move2, $move3, $move4)
     {
-    	if(false == isset($stats[$name])) {
-        	die('No info about ' . $name . ' in pokestats.php');
-        }
 
         $this->name = $name;
-        $this->energytype1 = $energytype1;
-        $this->energytype2 = $energytype2;
+        $this->energyType1 = $energyType1;
+        $this->energyType2 = $energyType2;
         $this->level = $level;
         $this->maxHitpoints = $maxHitpoints;
         $this->hitpoints = $hitpoints;
@@ -35,32 +36,22 @@ class pokemon
         $this->speed = $speed;
         $this->accuracy = $accuracy;
         $this->evasion = $evasion;
-
-        if(isset($stats[$name])) {
-
-			foreach ($stats[$name]['Moves'] as $attackname=>$value) {
-				$this->Moves[] = new move($attackname, $value);
-			}
-		} else {
-			$this->Moves = [];
-		}
+        $this->move1 = $move1;
+        $this->move2 = $move2;
+        $this->move3 = $move3;
+        $this->move4 = $move4;
 
 
     }
 
-    /*public function __toString()
-    {
-        return json_encode($this);
-    }*/
-
     public function checkMultiplier($target)
     {
     	require 'typechart.php';
-        if ($target->energytype2 == null) {
-            $multiplier = $table[$this->energytype1][$target->energytype1];
+        if ($target->energyType2 == null) {
+            $multiplier = $table[$this->energyType1][$target->energyType1];
         }
         else {
-            $multiplier = $table[$this->energytype1][$target->energytype1] * $table[$this->energytype1][$target->energytype2];
+            $multiplier = $table[$this->energyType1][$target->energyType1] * $table[$this->energyType1][$target->energyType2];
         }
 
     	return $multiplier;
@@ -70,20 +61,17 @@ class pokemon
     {
     	$multiplier = $this->checkMultiplier($target);
 
-    	$target->doDamage($this->hitpoints, $this->name, $this->level, $this->energytype1, $this->attack, $multiplier, $target->name, $target, $this->Moves);
-    	//print_r($this->moves);
+    	$target->doDamage($this->hitpoints, $this->name, $this->level, $this->energyType1, $this->attack, $multiplier, $target->name, $target);
     }
 
-    public function doDamage($hitpoints, $name, $level, $energytype, $attack, $multiplier, $targetName, $target, $moves)
+    public function doDamage($hitpoints, $name, $level, $energytype, $attack, $multiplier, $targetName, $target)
     {
-        var_dump($moves[rand(0, 3)]);
         /*
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         */
-        $moves[rand(0, 3)];
         $power = 50;
         /*
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

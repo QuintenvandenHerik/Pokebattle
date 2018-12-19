@@ -1,22 +1,20 @@
 <?php
 
-require 'pokemon.php';
-require 'pokebag.php';
-require 'move.php';
+require_once 'pokemon.php';
+require_once 'pokebag.php';    // pokebag requires move.php
 require_once 'pokestats.php';
 
+$pikachu = new pokemon('Pikachu', 'electric', null, /*level*/40, /*maxHitpoints*/ rand(90 , 115), /*hitpoints*/ null, /*attack*/ rand(61 , 86), /*SpAttack*/ rand(57 , 82), /*defence*/ rand(49 , 74), /*SpDefence*/ rand(57 , 82), /*speed*/ rand(89 , 114), /*accuracy*/ 100, /*evasion*/ 0, $QuickAttack, $Growl, $ThunderShock, $Discharge);
 
-$pikachu = new pokemon('Pikachu', 'electric', null, /*level*/40, /*maxHitpoints*/ rand(90 , 115), /*hitpoints*/ null, /*attack*/ rand(61 , 86), /*SpAttack*/ rand(57 , 82), /*defence*/ rand(49 , 74), /*SpDefence*/ rand(57 , 82), /*speed*/ rand(89 , 114), /*accuracy*/ 100, /*evasion*/ 0, $stats);
+$charmeleon = new pokemon('Charmeleon', 'fire', null, /*level*/40, /*maxHitpoints*/ rand(108 , 134), /*hitpoints*/ null, /*attack*/ rand(68 , 93), /*SpAttack*/ rand(81 , 106), /*defence*/ rand(63 , 89), /*SpDefence*/ rand(69 , 94), /*speed*/ rand(81 , 106), /*accuracy*/ 100, /*evasion*/ 0, $Ember, $Smokescreen, $DragonRage, $FireFang);
 
-$charmeleon = new pokemon('Charmeleon', 'fire', null, /*level*/40, /*maxHitpoints*/ rand(108 , 134), /*hitpoints*/ null, /*attack*/ rand(68 , 93), /*SpAttack*/ rand(81 , 106), /*defence*/ rand(63 , 89), /*SpDefence*/ rand(69 , 94), /*speed*/ rand(81 , 106), /*accuracy*/ 100, /*evasion*/ 0, $stats);
+$ivysaur = new pokemon('Ivysaur', 'grass', 'poison', /*level*/40, /*maxHitpoints*/ rand(110 , 135), /*hitpoints*/ null, /*attack*/ rand(67 , 92), /*SpAttack*/ rand(81 , 106), /*defence*/ rand(67 , 93), /*SpDefence*/ rand(81 , 106), /*speed*/ rand(65 , 90), /*accuracy*/ 100, /*evasion*/ 0, $LeechSeed, $VineWhip, $PoisonPowder, $SleepPowder);
 
-$ivysaur = new pokemon('Ivysaur', 'grass', 'poison', /*level*/40, /*maxHitpoints*/ rand(110 , 135), /*hitpoints*/ null, /*attack*/ rand(67 , 92), /*SpAttack*/ rand(81 , 106), /*defence*/ rand(67 , 93), /*SpDefence*/ rand(81 , 106), /*speed*/ rand(65 , 90), /*accuracy*/ 100, /*evasion*/ 0, $stats);
+$wartortle = new pokemon('Wartortle', 'water', null, /*level*/40, /*maxHitpoints*/ rand(109 , 134), /*hitpoints*/ null, /*attack*/ rand(67 , 93), /*SpAttack*/ rand(69 , 94), /*defence*/ rand(81 , 106), /*SpDefence*/ rand(81 , 106), /*speed*/ rand(63 , 89), /*accuracy*/ 100, /*evasion*/ 0, $WaterGun, $Bubble, $Bite, $AquaTail);
 
-$wartortle = new pokemon('Wartortle', 'water', null, /*level*/40, /*maxHitpoints*/ rand(109 , 134), /*hitpoints*/ null, /*attack*/ rand(67 , 93), /*SpAttack*/ rand(69 , 94), /*defence*/ rand(81 , 106), /*SpDefence*/ rand(81 , 106), /*speed*/ rand(63 , 89), /*accuracy*/ 100, /*evasion*/ 0, $stats);
+$butterfree = new pokemon('Butterfree', 'bug', 'flying', /*level*/40, /*maxHitpoints*/ rand(110 , 135), /*hitpoints*/ null, /*attack*/ rand(53 , 78), /*SpAttack*/ rand(89 , 114), /*defence*/ rand(57 , 82), /*SpDefence*/ rand(81 , 106), /*speed*/ rand(73 , 98), /*accuracy*/ 100, /*evasion*/ 0, $Confusion, $PoisonPowder, $BugBuzz, $AirSlash);
 
-$butterfree = new pokemon('Butterfree', 'bug', 'flying', /*level*/40, /*maxHitpoints*/ rand(110 , 135), /*hitpoints*/ null, /*attack*/ rand(53 , 78), /*SpAttack*/ rand(89 , 114), /*defence*/ rand(57 , 82), /*SpDefence*/ rand(81 , 106), /*speed*/ rand(73 , 98), /*accuracy*/ 100, /*evasion*/ 0, $stats);
-
-$beedrill = new pokemon('Beedrill', 'bug', 'poison', /*level*/40, /*maxHitpoints*/ rand(114 , 139), /*hitpoints*/ null, /*attack*/ rand(89 , 114), /*SpAttack*/ rand(53 , 78), /*defence*/ rand(49 , 74), /*SpDefence*/ rand(81 , 106), /*speed*/ rand(77 , 102), /*accuracy*/ 100, /*evasion*/ 0, $stats);
+$beedrill = new pokemon('Beedrill', 'bug', 'poison', /*level*/40, /*maxHitpoints*/ rand(114 , 139), /*hitpoints*/ null, /*attack*/ rand(89 , 114), /*SpAttack*/ rand(53 , 78), /*defence*/ rand(49 , 74), /*SpDefence*/ rand(81 , 106), /*speed*/ rand(77 , 102), /*accuracy*/ 100, /*evasion*/ 0, $Twineedle, $Venoshock, $PoisonJab, $Endeavor);
 
 
 $pokemon1 = null;

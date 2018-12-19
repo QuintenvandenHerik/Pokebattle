@@ -1,198 +1,27 @@
 <?php
 
-$stats = [
-	'Pikachu' => [
-		'Moves'=>[
-			'Quick Attack'=>[
-				'PowerLevel'=>40,
-				'PowerPoints'=>30,
-				'Accuracy'=>100,
-				'Category'=>'Physical',
-				'energytype'=>'normal'
-			],
-			'Growl'=>[
-				'PowerLevel'=>45,
-				'PowerPoints'=>40,
-				'Accuracy'=>100,
-				'Category'=>'Status',
-				'energytype'=>'normal'
-			],
-			'Thunder Shock'=>[
-				'PowerLevel'=>40,
-				'PowerPoints'=>30,
-				'Accuracy'=>100,
-				'Category'=>'Special',
-				'energytype'=>'electric'
-			],
-			'Discharge'=>[
-				'PowerLevel'=>80,
-				'PowerPoints'=>15,
-				'Accuracy'=>100,
-				'Category'=>'Special',
-				'energytype'=>'electric'
-			],
-		]
-	],
-	'Charmeleon' => [
-		'Moves'=>[
-			'Ember'=>[
-				'PowerLevel'=>40,
-				'PowerPoints'=>25,
-				'Accuracy'=>100,
-				'Category'=>'Special',
-				'energytype'=>'fire'
-			],
-			'Smokescreen'=>[
-				'PowerLevel'=>0,
-				'PowerPoints'=>20,
-				'Accuracy'=>100,
-				'Category'=>'Status',
-				'energytype'=>'normal'
-			],
-			'Dragon Rage'=>[
-				'PowerLevel'=>0,
-				'PowerPoints'=>10,
-				'Accuracy'=>100,
-				'Category'=>'Special',
-				'energytype'=>'dragon'
-			],
-			'Fire Fang'=>[
-				'PowerLevel'=>65,
-				'PowerPoints'=>15,
-				'Accuracy'=>95,
-				'Category'=>'Physical',
-				'energytype'=>'fire'
-			],
-		]
-	],
-	'Ivysaur' => [
-		'Moves'=>[
-			'Leech Seed'=>[
-				'PowerLevel'=>0,
-				'PowerPoints'=>10,
-				'Accuracy'=>90,
-				'Category'=>'Status',
-				'energytype'=>'grass'
-			],
-			'Vine Whip'=>[
-				'PowerLevel'=>45,
-				'PowerPoints'=>25,
-				'Accuracy'=>100,
-				'Category'=>'Physical',
-				'energytype'=>'grass'
-			],
-			'Poison Powder'=>[
-				'PowerLevel'=>0,
-				'PowerPoints'=>35,
-				'Accuracy'=>75,
-				'Category'=>'Status',
-				'energytype'=>'poison'
-			],
-			'Sleep Powder'=>[
-				'PowerLevel'=>0,
-				'PowerPoints'=>15,
-				'Accuracy'=>75,
-				'Category'=>'Status',
-				'energytype'=>'grass'
-			],
-		]
-	],
-	'Wartortle' => [
-		'Moves'=>[
-			'Water Gun'=>[
-				'PowerLevel'=>40,
-				'PowerPoints'=>25,
-				'Accuracy'=>100,
-				'Category'=>'Special',
-				'energytype'=>'water'
-			],
-			'Bubble'=>[
-				'PowerLevel'=>40,
-				'PowerPoints'=>30,
-				'Accuracy'=>100,
-				'Category'=>'Special',
-				'energytype'=>'water'
-			],
-			'Bite'=>[
-				'PowerLevel'=>60,
-				'PowerPoints'=>25,
-				'Accuracy'=>100,
-				'Category'=>'Physical',
-				'energytype'=>'dark'
-			],
-			'Aqua Tail'=>[
-				'PowerLevel'=>90,
-				'PowerPoints'=>10,
-				'Accuracy'=>90,
-				'Category'=>'Physical',
-				'energytype'=>'water'
-			],
-		]
-	],
-	'Butterfree' => [
-		'Moves'=>[
-			'Confusion'=>[
-				'PowerLevel'=>50,
-				'PowerPoints'=>25,
-				'Accuracy'=>100,
-				'Category'=>'Special',
-				'energytype'=>'physic'
-			],
-			'Poison Powder'=>[
-				'PowerLevel'=>0,
-				'PowerPoints'=>35,
-				'Accuracy'=>75,
-				'Category'=>'Status',
-				'energytype'=>'poison'
-			],
-			'Bug Buzz'=>[
-				'PowerLevel'=>90,
-				'PowerPoints'=>10,
-				'Accuracy'=>100,
-				'Category'=>'Special',
-				'energytype'=>'bug'
-			],
-			'Air Slash'=>[
-				'PowerLevel'=>75,
-				'PowerPoints'=>20,
-				'Accuracy'=>95,
-				'Category'=>'Special',
-				'energytype'=>'flying'
-			],
-		]
-	],
-	'Beedrill' => [
-		'Moves'=>[
-			'Twineedle'=>[
-				'PowerLevel'=>25,
-				'PowerPoints'=>20,
-				'Accuracy'=>100,
-				'Category'=>'Physical',
-				'energytype'=>'bug'
-			],
-			'Venoshock'=>[
-				'PowerLevel'=>65,
-				'PowerPoints'=>10,
-				'Accuracy'=>100,
-				'Category'=>'Special',
-				'energytype'=>'poison'
-			],
-			'Poison Jab'=>[
-				'PowerLevel'=>80,
-				'PowerPoints'=>20,
-				'Accuracy'=>100,
-				'Category'=>'Physical',
-				'energytype'=>'poison'
-			],
-			'Endeavor'=>[
-				'PowerLevel'=>0,
-				'PowerPoints'=>5,
-				'Accuracy'=>100,
-				'Category'=>'Physical',
-				'energytype'=>'normal'
-			],
-		]
-	],
-];
+require_once "move.php";
 
-
+$QuickAttack =	new move('Quick Attack', 	/*energy type*/'normal', 	/*power level*/40, 	/*power points*/ 30, 	/*accuracy*/ 100, 	/*category*/ "physical");
+$Growl =		new move('Growl', 			/*energy type*/'normal', 	/*power level*/45, 	/*power points*/ 40, 	/*accuracy*/ 100, 	/*category*/ "Status");
+$ThunderShock =	new move('Thunder Shock', 	/*energy type*/'electric', 	/*power level*/40, 	/*power points*/ 30, 	/*accuracy*/ 100, 	/*category*/ "special");
+$Discharge =	new move('Discharge', 		/*energy type*/'electric', 	/*power level*/40, 	/*power points*/ 30, 	/*accuracy*/ 100, 	/*category*/ "special");
+$Ember =		new move('Ember', 			/*energy type*/'fire', 		/*power level*/40, 	/*power points*/ 25, 	/*accuracy*/ 100, 	/*category*/ "special");
+$Smokescreen =	new move('Smokescreen', 	/*energy type*/'normal', 	/*power level*/0, 	/*power points*/ 20, 	/*accuracy*/ 100, 	/*category*/ "status");
+$DragonRage =	new move('Dragon Rage', 	/*energy type*/'dragon', 	/*power level*/0, 	/*power points*/ 10, 	/*accuracy*/ 100, 	/*category*/ "special");
+$FireFang =		new move('Fire Fang', 		/*energy type*/'fire', 		/*power level*/65, 	/*power points*/ 15, 	/*accuracy*/ 100, 	/*category*/ "physical");
+$LeechSeed =	new move('Leech Seed', 		/*energy type*/'grass', 	/*power level*/0, 	/*power points*/ 10, 	/*accuracy*/ 90, 	/*category*/ "status");
+$VineWhip =		new move('Vine Whip', 		/*energy type*/'grass', 	/*power level*/45, 	/*power points*/ 25, 	/*accuracy*/ 100, 	/*category*/ "physical");
+$PoisonPowder =	new move('Poison Powder', 	/*energy type*/'poison', 	/*power level*/0, 	/*power points*/ 35, 	/*accuracy*/ 75, 	/*category*/ "status");
+$SleepPowder =	new move('Sleep Powder', 	/*energy type*/'grass', 	/*power level*/0, 	/*power points*/ 15, 	/*accuracy*/ 100, 	/*category*/ "status");
+$WaterGun =		new move('Water Gun', 		/*energy type*/'water', 	/*power level*/40, 	/*power points*/ 25, 	/*accuracy*/ 100, 	/*category*/ "special");
+$Bubble =		new move('Bubble', 			/*energy type*/'water', 	/*power level*/40, 	/*power points*/ 30, 	/*accuracy*/ 100, 	/*category*/ "special");
+$Bite =			new move('Bite', 			/*energy type*/'dark', 		/*power level*/60, 	/*power points*/ 25, 	/*accuracy*/ 100, 	/*category*/ "physical");
+$AquaTail =		new move('Aqua Tail', 		/*energy type*/'water', 	/*power level*/90, 	/*power points*/ 10, 	/*accuracy*/ 90, 	/*category*/ "physical");
+$Confusion =	new move('Confusion', 		/*energy type*/'physic', 	/*power level*/50, 	/*power points*/ 25, 	/*accuracy*/ 100, 	/*category*/ "special");
+$BugBuzz =		new move('Bug Buzz', 		/*energy type*/'bug', 		/*power level*/90, 	/*power points*/ 10, 	/*accuracy*/ 100, 	/*category*/ "special");
+$AirSlash =		new move('Air Slash', 		/*energy type*/'flying', 	/*power level*/75, 	/*power points*/ 20, 	/*accuracy*/ 95, 	/*category*/ "special");
+$Twineedle =	new move('Twineedle', 		/*energy type*/'bug', 		/*power level*/25, 	/*power points*/ 20, 	/*accuracy*/ 100, 	/*category*/ "physical");
+$Venoshock =	new move('Venoshock', 		/*energy type*/'poison', 	/*power level*/65, 	/*power points*/ 10, 	/*accuracy*/ 100, 	/*category*/ "special");
+$PoisonJab =	new move('Poison Jab', 		/*energy type*/'poison', 	/*power level*/80, 	/*power points*/ 20, 	/*accuracy*/ 100, 	/*category*/ "physical");
+$Endeavor =		new move('Endeavor', 		/*energy type*/'normal', 	/*power level*/0, 	/*power points*/ 5, 	/*accuracy*/ 100, 	/*category*/ "physical");
