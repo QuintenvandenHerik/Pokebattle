@@ -16,7 +16,6 @@ $butterfree = new pokemon('Butterfree', 'bug', 'flying', /*level*/40, /*maxHitpo
 
 $beedrill = new pokemon('Beedrill', 'bug', 'poison', /*level*/40, /*maxHitpoints*/ rand(114 , 139), /*hitpoints*/ null, /*attack*/ rand(89 , 114), /*SpAttack*/ rand(53 , 78), /*defence*/ rand(49 , 74), /*SpDefence*/ rand(81 , 106), /*speed*/ rand(77 , 102), /*accuracy*/ 100, /*evasion*/ 0, $Twineedle, $Venoshock, $PoisonJab, $Endeavor);
 
-
 $pokemon1 = null;
 $pokemon2 = null;
 $pokebag = new pokebag();
@@ -62,11 +61,24 @@ PrintPokemonStats($pokemon1);
 PrintPokemonStats($pokemon2);
 
 while($pokemon1->hitpoints > 0 & $pokemon2->hitpoints > 0) {
-	$pokemon1->fight($pokemon2);
-	$pokemon2->fight($pokemon1);
+	if ($pokemon1->speed > $pokemon2->speed) {
+		$pokemon1->fight($pokemon2);
+		if ($pokemon2->hitpoints > 0) {
+			$pokemon2->fight($pokemon1);
+		}
 
-	PrintPokemonStats($pokemon1);
-	PrintPokemonStats($pokemon2);
+		PrintPokemonStats($pokemon1);
+		PrintPokemonStats($pokemon2);
+
+	}
+	else {
+		$pokemon2->fight($pokemon1);
+		if ($pokemon1->hitpoints > 0) {
+			$pokemon1->fight($pokemon2);
+		}
+		PrintPokemonStats($pokemon2);
+		PrintPokemonStats($pokemon1);
+	}
 }
 
 function PrintPokemonStats($pokemon)
