@@ -1,7 +1,7 @@
 <?php
 
 class move {
-	public $name;
+	private $name;
 	public $energyType;
 	public $powerLevel;
 	public $powerPoints;

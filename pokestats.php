@@ -1,7 +1,5 @@
 <?php
 
-require_once "move.php";
-
 $QuickAttack =	new move('Quick Attack', 	/*energy type*/'normal', 	/*power level*/40, 	/*power points*/ 30, 	/*accuracy*/ 100, 	/*category*/ "physical");
 $Growl =		new move('Growl', 			/*energy type*/'normal', 	/*power level*/45, 	/*power points*/ 40, 	/*accuracy*/ 100, 	/*category*/ "Status");
 $ThunderShock =	new move('Thunder Shock', 	/*energy type*/'electric', 	/*power level*/40, 	/*power points*/ 30, 	/*accuracy*/ 100, 	/*category*/ "special");

@@ -1,31 +1,29 @@
 <?php
 
-class pokemon
+require_once "move.php";
+
+class Pokemon
 {
 	public $name;
-    public $energyType1;
-    public $energyType2;
-    public $level;
+    private $energyType;
+    private $level;
 	public $maxHitpoints;
 	public $hitpoints;
-	public $attack;
-	public $SpAttack;
+	private $attack;
+	private $SpAttack;
 	public $defence;
 	public $SpDefence;
 	public $speed;
-	public $accuracy;
-    public $evasion;
-    public $move1;
-    public $move2;
-    public $move3;
-    public $move4;
+	private $accuracy;
+    private $evasion;
+    private $moves;
+    protected $talks;
 
-	public function __construct($name, $energyType1, $energyType2, $level, $maxHitpoints, $hitpoints, $attack, $SpAttack, $defence, $SpDefence, $speed, $accuracy, $evasion, $move1, $move2, $move3, $move4)
+
+	public function __construct($name, $energyType, $level, $maxHitpoints, $hitpoints, $attack, $SpAttack, $defence, $SpDefence, $speed, $accuracy, $evasion, $moves)
     {
-
         $this->name = $name;
-        $this->energyType1 = $energyType1;
-        $this->energyType2 = $energyType2;
+        $this->energyType = $energyType;
         $this->level = $level;
         $this->maxHitpoints = $maxHitpoints;
         $this->hitpoints = $hitpoints;
@@ -36,22 +34,18 @@ class pokemon
         $this->speed = $speed;
         $this->accuracy = $accuracy;
         $this->evasion = $evasion;
-        $this->move1 = $move1;
-        $this->move2 = $move2;
-        $this->move3 = $move3;
-        $this->move4 = $move4;
-
-
+        $this->moves = $moves;
+        $this->talks = false;
     }
 
-    public function checkMultiplier($target, $move)
+    private function checkMultiplier($target, $move)
     {
     	require 'typechart.php';
-        if ($target->energyType2 == null) {
-            $multiplier = $table[$move->energyType][$target->energyType1];
+        if ($target->energyType[1] == null) {
+            $multiplier = $table[$move->energyType][$target->energyType[0]];
         }
         else {
-            $multiplier = $table[$move->energyType][$target->energyType1] * $table[$move->energyType][$target->energyType2];
+            $multiplier = $table[$move->energyType][$target->energyType[0]] * $table[$move->energyType][$target->energyType[1]];
         }
 
     	return $multiplier;
@@ -59,14 +53,13 @@ class pokemon
 
     public function fight($target)
     {
-        $moveNumber = "move" . rand (1, 4);
-        $chosenMove = $this->$moveNumber;
-    	$multiplier = $this->checkMultiplier($target, $chosenMove);
+        $moveNumber = $this->moves[rand (0, 3)];
+    	$multiplier = $this->checkMultiplier($target, $moveNumber);
 
-    	$target->doDamage($this->hitpoints, $this->name, $this->level, $this->energyType1, $this->attack, $this->SpAttack, $multiplier, $target->name, $target, $chosenMove);
+    	$target->doDamage($this->hitpoints, $this->name, $this->level, $this->energyType[0], $this->attack, $this->SpAttack, $multiplier, $target->name, $target, $moveNumber);
     }
 
-    public function doDamage($hitpoints, $name, $level, $energytype, $attack, $SpAttack, $multiplier, $targetName, $target, $move)
+    private function doDamage($hitpoints, $name, $level, $energytype, $attack, $SpAttack, $multiplier, $targetName, $target, $move)
     {
         $power = $move->powerLevel;
 
